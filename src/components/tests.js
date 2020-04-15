@@ -21,9 +21,9 @@ const CustomTooltipContent = props => {
     return <DefaultTooltipContent {...props} payload={newPayload} />;
   };
 
-const Deaths = ({ deaths }) => {
+const Tests = ({ tests }) => {
 
-    deaths.map((report)=>{
+    tests.map((report)=>{
         console.log(report.state);
         console.log(report.totalTestResults);
         //report.totalTestResults=report.totalTestResults/statePopulations[report.state];
@@ -34,7 +34,7 @@ const Deaths = ({ deaths }) => {
   return (
     <div>
       <center><h1>Latest State Covid Testing Figures</h1></center>
-      <LineChart width={2000} height={300} data={deaths}
+      <LineChart width={2000} height={300} data={tests}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <XAxis dataKey="state" interval="preserveEnd"/>
        <YAxis interval="preserveEnd"/>
@@ -49,4 +49,4 @@ const Deaths = ({ deaths }) => {
   )
 };
 
-export default Deaths;
+export default Tests;
