@@ -4,7 +4,12 @@ import moment from 'moment';
 import DefaultTooltipContent from 'recharts/lib/component/DefaultTooltipContent';
 
 
-const dateFormatter = (item) => moment(item);
+const dateFormatter = (item) => {
+    var partial = item.toString();
+    var datestr = partial.slice(0, 4) + "-" +  partial.slice(4,6)+"-"+partial.slice(6);
+    console.log(datestr);
+    return moment(datestr);
+};
 
 const CustomTooltipContent = props => {
     if (!props.active) {
@@ -36,49 +41,35 @@ const Positives = ({ positives }) => {
         var found=false;
         for (var i = 0; i < alabama.length; i++) {
             if(alabama[i].date==date){
-                alabama[i][report.state]=report.totalTestResults;
+                alabama[i][report.state]=report.positive/report.totalTestResults*100;
                 found=true;
             }
         }
         if(!found){
             var guh={};
             guh['date']=report.date;
-            guh[report.state]=report.totalTestResults;
+            guh[report.state]=report.positive/report.totalTestResults*100;
             alabama.push(guh);
         }
         
         return report;
     });
-    const categories = ["AL", "MD"];
-    //needed format: {date:023423, MD:23423, VA:2353, DC:2345234}
+    const categories = ["MD", "AL"];
 
-//<XAxis dataKey="dateChecked" tickFormatter={dateFormatter} interval="preserveEnd"/>
-    
-//        linesToRender.push(<Line key='state' dataKey='totalTestResults'/>);
-//{categories.map(cat =>
-  //  [
-    //  <Line type="monotone" key='hash' dataKey={cat} connectNulls={true} />,
-    //]
-  //)} 
-
-  //{categories.map(cat =>
-  //  [
-   //     <Line type="monotone" key='hash' dataKey={cat} connectNulls={true} />,
-  //  ]
-//)} 
 console.log(alabama);
   return (
     <div>
       <center><h1>Percent Positives</h1></center>
       <LineChart width={2000} height={300} data={alabama}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-       <XAxis dataKey="date" interval="preserveEnd"/>
+       <XAxis dataKey="date" interval="preserveEnd" tickFormatter={dateFormatter}/>
        <YAxis interval="preserveEnd"/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip content={<CustomTooltipContent />} />
        <Legend />
-       <Line type="monotone"  dataKey='MD' connectNulls={true} />
-       <Line type="monotone" dataKey='VA' connectNulls={true}/>
+       {categories.map((cat,i)=>
+            <Line type="monotone" key={i} dataKey={cat} connectNulls={false} stroke={'#'+Math.floor(Math.random()*16777215).toString(16)} />
+        )} 
 
       </LineChart>
 
