@@ -8,7 +8,7 @@ const dateFormatter = (item) => {
     var partial = item.toString();
     var datestr = partial.slice(0, 4) + "-" +  partial.slice(4,6)+"-"+partial.slice(6);
     console.log(datestr);
-    return moment(datestr);
+    return moment(datestr).format("MMMM Do");
 };
 
 const CustomTooltipContent = props => {
@@ -62,10 +62,10 @@ console.log(alabama);
       <center><h1>Percent Positives</h1></center>
       <LineChart width={2000} height={300} data={alabama}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-       <XAxis dataKey="date" interval="preserveEnd" tickFormatter={dateFormatter}/>
+       <XAxis dataKey="date" interval="preserveEnd" tickFormatter={dateFormatter} reversed={true}/>
        <YAxis interval="preserveEnd"/>
        <CartesianGrid strokeDasharray="3 3"/>
-       <Tooltip content={<CustomTooltipContent />} />
+       <Tooltip labelFormatter={dateFormatter}/>
        <Legend />
        {categories.map((cat,i)=>
             <Line type="monotone" key={i} dataKey={cat} connectNulls={false} stroke={'#'+Math.floor(Math.random()*16777215).toString(16)} />
