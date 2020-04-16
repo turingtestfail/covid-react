@@ -54,7 +54,7 @@ const Positives = ({ positives }) => {
         
         return report;
     });
-    const categories = ["MD", "AL"];
+    const categories = ["CA","GA","MD", "VA","WA","NY","OR","DC","FL","LA","WI","NC","AL"];
 
 console.log(alabama);
   return (
