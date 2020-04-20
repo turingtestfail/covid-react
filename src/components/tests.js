@@ -1,5 +1,5 @@
 import React from 'react';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import moment from 'moment';
 import DefaultTooltipContent from 'recharts/lib/component/DefaultTooltipContent';
 
@@ -34,15 +34,15 @@ const Tests = ({ tests }) => {
   return (
     <div>
       <center><h1>Latest State Covid Testing Figures</h1></center>
-      <LineChart width={2000} height={300} data={tests}
+      <BarChart width={2000} height={300} data={tests}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <XAxis dataKey="state" interval="preserveEnd"/>
        <YAxis interval="preserveEnd"/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip content={<CustomTooltipContent />} />
        <Legend />
-        <Line key='state' dataKey='totalTestResults'/>
-      </LineChart>
+        <Bar key='state' dataKey='totalTestResults'/>
+      </BarChart>
 
 
     </div>
