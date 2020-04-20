@@ -12,6 +12,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+### `npm run build`
+
+Run npm run build (it bundles and optimizes your app for production), 
+
+### `npm run deploy`
+
+Run npm run deploy to send it to S3
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
