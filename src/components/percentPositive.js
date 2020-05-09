@@ -58,6 +58,7 @@ const Positives = ({ positives }) => {
 
 console.log(alabama);
   return (
+    
     <div>
       <center><h1>Percent Positives</h1></center>
       <LineChart width={2000} height={300} data={alabama}
