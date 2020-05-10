@@ -2,7 +2,7 @@ import React from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import moment from 'moment';
 import DefaultTooltipContent from 'recharts/lib/component/DefaultTooltipContent';
-
+import { Multiselect } from 'multiselect-react-dropdown';
 
 const dateFormatter = (item) => {
     var partial = item.toString();
@@ -31,7 +31,7 @@ const CustomTooltipContent = props => {
     return <DefaultTooltipContent {...props} payload={newPayload} />;
   };
 
-const Positives = ({ positives,stateAbbrev }) => {
+const Positives = ({ positives,stateAbbrev,options,handler }) => {
     var linesToRender=[];
     var alabama=[];
     var meh = positives.map((report)=>{
@@ -54,7 +54,6 @@ const Positives = ({ positives,stateAbbrev }) => {
         
         return report;
     });
-    const categories = ["CA","GA","MD", "VA","WA","NY","OR","DC","FL","LA","WI","NC","AL"];
 
 console.log(alabama);
   return (
@@ -73,7 +72,14 @@ console.log(alabama);
         )} 
 
       </LineChart>
-
+      <Multiselect
+          options={options} // Options to display in the dropdown
+          selectedValues={stateAbbrev} // Preselected value to persist in dropdown
+          isObject={false}
+          showCheckbox={true}
+          onSelect={handler}
+          onRemove={handler}
+        />
 
     </div>
   )
