@@ -2,6 +2,7 @@ import React from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import moment from 'moment';
 import DefaultTooltipContent from 'recharts/lib/component/DefaultTooltipContent';
+import Populations from './populations';
 
 
 const dateFormatter = (item) => moment(item);
@@ -26,7 +27,7 @@ const Tests = ({ tests }) => {
     tests.map((report)=>{
         console.log(report.state);
         console.log(report.totalTestResults);
-        //report.totalTestResults=report.totalTestResults/statePopulations[report.state];
+        report.testsPerCapita=report.totalTestResults/Populations[report.state];
         return report;
     });
 //<XAxis dataKey="dateChecked" tickFormatter={dateFormatter} interval="preserveEnd"/>
@@ -41,7 +42,7 @@ const Tests = ({ tests }) => {
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip content={<CustomTooltipContent />} />
        <Legend />
-        <Bar key='state' dataKey='totalTestResults'/>
+        <Bar key='state' dataKey='testsPerCapita'/>
       </BarChart>
 
 
