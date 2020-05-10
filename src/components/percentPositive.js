@@ -31,7 +31,7 @@ const CustomTooltipContent = props => {
     return <DefaultTooltipContent {...props} payload={newPayload} />;
   };
 
-const Positives = ({ positives }) => {
+const Positives = ({ positives,stateAbbrev }) => {
     var linesToRender=[];
     var alabama=[];
     var meh = positives.map((report)=>{
@@ -68,7 +68,7 @@ console.log(alabama);
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip labelFormatter={dateFormatter}/>
        <Legend />
-       {categories.map((cat,i)=>
+       {stateAbbrev.map((cat,i)=>
             <Line type="monotone" key={i} dataKey={cat} connectNulls={false} stroke={'#'+Math.floor(Math.random()*16777215).toString(16)} />
         )} 
 
