@@ -34,7 +34,7 @@ const Tests = ({ tests }) => {
 
   return (
     <div>
-      <center><h1>Latest State Covid Testing Figures</h1></center>
+      <center><h1>Yesterday's Covid Tests As A Percentage of State Population</h1></center>
       <BarChart width={2000} height={300} data={tests}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <XAxis dataKey="state" interval="preserveEnd"/>

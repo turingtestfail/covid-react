@@ -1,6 +1,7 @@
     // src/components/contacts.js
 
-    import React from 'react'
+    import React from 'react';
+    import Populations from './populations';
 
     const States = ({ states }) => {
       return (
@@ -13,6 +14,7 @@
                 <h6 class="card-subtitle mb-2 text-muted">Total Tests: {state.totalTestResults}</h6>
                 <p class="card-text">Positive: {state.positive}</p>
                 <p class="card-text">Negative: {state.negative}</p>
+                <p class="card-text">State Population: {Populations[state.state]}</p>
               </div>
             </div>
           ))}
