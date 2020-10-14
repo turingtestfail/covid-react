@@ -3,6 +3,7 @@ import States from './components/states';
 import Tests from './components/tests';
 import Positives from './components/percentPositive';
 import Daily from './components/dailyPercentPositive';
+import Countdown from 'react-countdown';
 
 
 class App extends Component {
@@ -22,21 +23,21 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    fetch('https://covidtracking.com/api/states')
+    fetch('https://api.covidtracking.com/states')
     .then(res => res.json())
     .then((data) => {
       this.setState({ states: data, tests: data })
     })
     .catch(console.log)
 
-    fetch('https://covidtracking.com/api/v1/states/daily.json')
+    fetch('https://api.covidtracking.com/v1/states/daily.json')
     .then(res => res.json())
     .then((data) => {
       this.setState({ daily: data })
     })
     .catch(console.log)
 
-    fetch('https://covidtracking.com/api/v1/states/current.json')
+    fetch('https://api.covidtracking.com/v1/states/current.json')
     .then(res => res.json())
     .then((data) => {
       this.setState({ current: data })
@@ -46,6 +47,10 @@ class App extends Component {
   render () {
     return (
       <div>
+        Pfizer Countdown: <Countdown date={'2020-11-01T20:00:00'} /><br/>
+        Election Countdown: <Countdown date={'2020-11-03T20:00:00'} /><br/>
+        Moderna Countdown: <Countdown date={'2020-11-25T20:00:00'} /><br/>
+        New Year Countdown: <Countdown date={'2021-01-01T00:00:00'} />
         <Tests tests={this.state.tests} />
         <Daily daily={this.state.current} />
         <Positives positives={this.state.daily} stateAbbrev={this.state.selectedValue} options={this.state.options} handler = {this.handler}/>

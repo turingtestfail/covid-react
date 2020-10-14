@@ -8,6 +8,7 @@ import Populations from './populations';
 const dateFormatter = (item) => moment(item);
 
 const CustomTooltipContent = props => {
+  //console.log(props);
     if (!props.active) {
       return null
     }
@@ -25,8 +26,8 @@ const CustomTooltipContent = props => {
 const Tests = ({ tests }) => {
 
     tests.map((report)=>{
-        console.log(report.state);
-        console.log(report.totalTestResults);
+        //console.log(report.state);
+        //console.log(report.totalTestResults);
         report.testsPerCapita=report.totalTestResults/Populations[report.state];
         return report;
     });

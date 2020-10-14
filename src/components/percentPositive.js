@@ -7,7 +7,7 @@ import { Multiselect } from 'multiselect-react-dropdown';
 const dateFormatter = (item) => {
     var partial = item.toString();
     var datestr = partial.slice(0, 4) + "-" +  partial.slice(4,6)+"-"+partial.slice(6);
-    console.log(datestr);
+   // console.log(datestr);
     return moment(datestr).format("MMMM Do");
 };
 
@@ -35,7 +35,7 @@ const Positives = ({ positives,stateAbbrev,options,handler }) => {
     var linesToRender=[];
     var alabama=[];
     var meh = positives.map((report)=>{
-        console.log(report.state);
+        //console.log(report.state);
         //report.totalTestResults=report.totalTestResults/statePopulations[report.state];
         var date = report.date;
         var found=false;
@@ -55,7 +55,7 @@ const Positives = ({ positives,stateAbbrev,options,handler }) => {
         return report;
     });
 
-console.log(alabama);
+//console.log(alabama);
   return (
     
     <div>

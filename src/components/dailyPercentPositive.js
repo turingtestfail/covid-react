@@ -24,8 +24,8 @@ const CustomTooltipContent = props => {
 const Daily = ({ daily }) => {
 
     daily.map((report)=>{
-        console.log(report.state);
-        console.log(report.totalTestResults);
+       // console.log(report.state);
+       // console.log(report.totalTestResults);
         //report.totalTestResults=report.totalTestResults/statePopulations[report.state];
         report.percentage=report.positive/report.totalTestResults;
         return report;
