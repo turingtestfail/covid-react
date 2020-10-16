@@ -47,7 +47,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        Pfizer Countdown: <Countdown date={'2020-11-01T20:00:00'} /><br/>
+        Pfizer Countdown: <Countdown date={'2020-11-30T20:00:00'} /><br/>
         Election Countdown: <Countdown date={'2020-11-03T20:00:00'} /><br/>
         Moderna Countdown: <Countdown date={'2020-11-25T20:00:00'} /><br/>
         New Year Countdown: <Countdown date={'2021-01-01T00:00:00'} />
